@@ -1,0 +1,34 @@
+<div class="row-fluid">
+  <div class="span10">
+    <h3>Weblink</h3>
+  </div>
+
+  <div class="span10 well form-inline">
+    <div class="control-group">
+        <%= link_to "新增", new_weblink_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+  
+  <div class="span10">
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>名称</th>
+          <th>URL</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @weblinks.each do |weblink| %>
+          <tr>
+            <td><%= weblink.name %></td>
+            <td><%= weblink.url %></td>
+            <td><%= link_to "删除", "/weblinks/delete?id=#{weblink.id}", class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+</div>

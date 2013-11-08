@@ -1,0 +1,12 @@
+<%= partial("moods/date_list") %>
+<div class="col-md-8" localday="<%= @local_day%>">
+  <div class="jumbotron">
+    <h2><%= @mood.title %></h2>
+    <hr>
+    <p><%= @mood.content %></p>
+</div>
+<script type="text/javascript">
+  $("#moods").addClass("active");
+  local = $(".col-md-8").attr("localday");
+  $("#"+local).addClass("active");
+</script>

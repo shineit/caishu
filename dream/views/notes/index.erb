@@ -1,0 +1,28 @@
+<div class="col-md-2 col-md-offset-1">
+  <ul class="nav nav-pills nav-stacked bs-docs-sidenav affix">
+    <% @note_categories.each do |note_category| %>
+      <li><a href="/notes?id=<%=note_category.id%>"><%=note_category.name%></a></li>
+    <% end %>
+  </ul>
+</div>
+<div class="col-md-6">
+  <ol class="breadcrumb">
+    <li><a href="/notes">笔记</a></li>
+  </ol>
+  <hr>
+  <div class="list-group">
+    <% @notes.each do |note|%>
+    <a href="/notes/<%=note.id%>" class="list-group-item">
+      <span class="badge"><%=note.created_at.strftime('%Y-%-m-%-d')%></span>
+      <h4 class="list-group-item-heading"><%= note.title%></h4>
+    </a>
+    <% end %>
+  </div>
+</div>
+  <script type="text/javascript">
+  $("#notes").addClass("active");
+  if("<%=@note_category%>" == ""){
+  }else{
+    $(".breadcrumb").append("<li class='active'><%=@note_category%></li>")
+  }
+</script>

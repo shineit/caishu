@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-9 well form-horizontal col-md-offset-1">
+    <%= form_for(@note,:html => {:role=>'form'}) do |f| %>
+      <h3>添加笔记</h3>
+
+      <div class="form-group">
+        <label class="control-label">标题</label>
+        <%= f.text_field :title, class:"form-control",:placeholder => "输入标题"%>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">分类</label>
+        <div class="controls">
+          <%= f.select(:note_category_id,options_for_select(@note_categories))%>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= javascript_include_tag "ckeditor/ckeditor.js" %>  
+        <%= f.cktext_area("content",:width => '100%') %>  
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">上传图片</label>
+        <%= f.file_field :file, class: "input-file" %>
+      </div>
+
+        <%= f.submit '保存笔记',class: "btn btn-success"%>
+    <% end %>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#note_note_category_id").addClass("form-control");
+</script>

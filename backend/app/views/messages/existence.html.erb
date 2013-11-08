@@ -1,0 +1,27 @@
+<div class="row-fluid">
+  <div class="span10">
+    <h3>已办回复任务</h3>
+  </div>
+  <div class="span10">
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>内容</th>
+          <th>回复</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @message.each do |mess| %>
+          <tr>
+            <td><%= mess.content %></td>
+            <td><%= mess.response %></td>
+            <td><%= link_to '修改',"/messages/#{mess.id}/edit", class: "btn btn-primary"%>
+                <%= link_to '删除',mess, method: :delete,:remote => true , class: "btn btn-primary"%>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

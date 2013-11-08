@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="list-group">
+      <% @essays.each do |essay|%>
+      <a href="/essays/<%=essay.id%>" class="list-group-item">
+        <span class="badge"><%=essay.created_at.strftime('%Y-%-m-%-d')%></span>
+        <h4 class="list-group-item-heading"><%= essay.title%></h4>
+      </a>
+      <% end %>
+    </div>
+</div>
+<script type="text/javascript">
+  $("#essays").addClass("active");
+</script>

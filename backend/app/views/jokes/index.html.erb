@@ -1,0 +1,40 @@
+<div class="row-fluid">
+  <div class="span10">
+    <h3>Joke</h3>
+  </div>
+
+  <div class="span10 well form-inline">
+    <div class="control-group">
+        <label><%= @size%></label>
+        <%= link_to "新增", new_joke_path, class: "btn btn-primary" %>
+        <%= link_to "使用爬虫新增", '/jokes/add_from_spider', class: "btn btn-primary" %>
+        <%= link_to "删除空白记录", '/jokes/delete_empty_record', class: "btn btn-primary" %>
+    </div>
+  </div>
+  
+  <div class="span10">
+    <table class="table table-striped table-bordered table-condensed">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>名称</th>
+          <th>内容</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @jokes.each do |joke| %>
+          <tr>
+            <td><%= joke.id %></td>
+            <td><%= joke.name %></td>
+            <td><%= joke.content %></td>
+            <td><%= link_to "删除", "/jokes/delete?id=#{joke.id}", class: "btn btn-primary" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <%= paginate @jokes%>
+  </div>
+
+</div>

@@ -1,0 +1,83 @@
+<link href="<%=File.join(Settings.static_root,'css/dream/photo.css' )%>" rel="stylesheet" type="text/css" />
+
+<div class="container">
+  <div class="huadong">
+    <div id="carousel-example-generic" class="carousel slide bs-docs-carousel-example">
+      <ol class="carousel-indicators">
+        <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+        <li data-target="#carousel-example-generic" data-slide-to="1" class=""></li>
+        <li data-target="#carousel-example-generic" data-slide-to="2" class=""></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="item active">
+          <% if @focus[0]%>
+            <% @focus[0].each do |photo|%>
+              <div class="ddd">
+                <a href="/photos/list?photo_category_id=<%=photo.photo_category_id%>">
+                  <img src="<%=picture_url(photo.alias_name,"focus",photo.photo_category_id.to_s)%>" onmouseover="setover(this)" onmouseout="setout(this)" alt="First slide">
+                </a>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <% @focus.drop(1).each do |focus| %>
+          <div class="item">
+            <% focus.each do |photo|%>
+              <div class="ddd">
+                <a href="/photos/list?photo_category_id=<%=photo.photo_category_id%>">
+                  <img src="<%=picture_url(photo.alias_name,"focus",photo.photo_category_id.to_s)%>" onmouseover="setover(this)" onmouseout="setout(this)" alt="First slide">  
+                </a>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+    </div>
+  </div>
+
+
+	<div class="dayhot">
+    <%= partial("photos/dayhot") %>  
+	</div>
+</div>
+
+<% @results.each do |result| %>
+  <div class="container">
+    <b><h2><%= result[0] %></h2></b>
+    <div class="itemlist">
+      <% result[1].each do |photo|%>
+        <div class="clo">
+          <a href="/photos/list?photo_category_id=<%=photo.photo_category_id%>">
+            <img src="<%= picture_url(photo.alias_name,"avatar",photo.photo_category_id.to_s)%>" onmouseover="setover(this)" onmouseout="setout(this)">
+          </a>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<br>
+<div class="container" style="text-align:center">
+	<small>把百度设为首页 | 搜索风云榜 | 关于百度</small>
+	<br><small>©2013 Baidu 使用百度前必读</small>
+</div>
+
+<script type="text/javascript">
+  $("#photos").addClass("active");
+  function setover(obj) {
+      obj.style['opacity'] = 0.8;
+      obj.style['filter'] = 'alpha(opacity=50)';
+  }
+  function setout(obj) {
+      obj.style['opacity'] = 1;
+      obj.style['filter'] = 'alpha(opacity=100)';
+  }
+</script>

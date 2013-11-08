@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="<%=File.join(Settings.static_root,'css/bootstrap.min.css') %>" rel="stylesheet" type="text/css" />
+  <link href="<%=File.join(Settings.static_root,'css/wap/wap.css') %>" rel="stylesheet" type="text/css" />
+  <title>wap</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Cache-Control" content="no-cache"/>
+  <meta name="viewport" content="width=device-width; initial-scale=1.4;  minimum-scale=1.0; maximum-scale=2.0"/>
+  <meta name="MobileOptimized" content="240"/>
+  <script src="<%=File.join(Settings.static_root,'js/jquery.js') %>" type="text/javascript"></script>
+<body>
+
+<%= yield %>
+
+<script type="text/javascript">
+  var page = 1;
+  var category2 = true;
+  $(function(){
+    $(".get-more").click(function(){
+      $(".get-more").addClass("loading").text('');
+      maxpage = $(".container").attr("maxpage");
+      photo_category_id = $(".container").attr("photocategoryid");
+      if(page < maxpage){
+        $.ajax({
+          url: "/get_more_photos?photo_category_id="+photo_category_id,
+          method: "get",
+          data:{"page":page+1},
+
+          success:function(data){
+            page++;
+            if(page >= maxpage){
+              $(".get-more").hide();
+            }
+            $(".container").append(data);
+          },
+          error: function () {
+                  alert("服务器忙，请稍后再试。");
+              },
+          complete:function(){
+            $(".get-more").removeClass("loading").text('获取更多...');
+          }
+        });
+      }else{
+        $(".get-more").hide();
+      }
+    });
+
+    $(".header").find(".title").off().on("click", function () {
+      $(".header").find(".title").find("i").toggleClass("sup");
+      if(category2 == true){
+        $(".header .popover").slideToggle();
+        category2 == false;
+      }else{
+        $(".header .popover").hide();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+
+

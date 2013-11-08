@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="list-group">
+    <% @philosophies.each do |philosophy|%>
+      <h4 class="list-group-item-heading list-group-item">
+        <br>
+        <%= philosophy.content%>
+        <br><br>
+      </h4>
+      <br>
+    <% end %>
+  </div>
+</div>
+<style type="text/css">
+
+.list-group-item-heading{
+  padding-left: 60px;
+  padding-right: 60px;
+  line-height: 30px;
+}
+</style>

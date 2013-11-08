@@ -1,0 +1,224 @@
+<link href="<%=File.join(Settings.static_root,'css/dream/photo.css' )%>" rel="stylesheet" type="text/css" />
+<link href="<%=File.join(Settings.static_root,'css/colorbox.css' )%>" rel="stylesheet" type="text/css" />
+
+<div class="background_photo">
+  <div class="container">
+    <div class="row">
+      <% colors = %w[default primary success info warning danger]%>
+      <% @photo_categories.each_with_index do |photo_category,i| %>
+        <a href="/photos/list?photo_category_id=<%=photo_category.id%>">
+          <span class="label label-<%=colors[rand(6)]%>"><%= photo_category.name%></span>
+        </a>
+      <% end %>
+    </div>
+  	<div class="row">
+  		<div class="col-md-3 col-md-offset-9">
+        <div class="btn-group">
+          <button type="button" id="new" class="btn btn-default">new</button>
+          <button type="button" id="hot" class="btn btn-default">hot</button>
+        </div>
+  		</div>
+  	</div>
+  <br>
+  <div id="main">
+      <ul id="tiles" maxpage="<%=@maxpage%>" photocategoryid="<%=@photo_category_id%>">
+        <% @photos_list.each_with_index do |photo,index|%>
+          <li>
+            <div>
+            <a href="<%=picture_url(photo.alias_name,"origin",@photo_category_id)%>" photoid="<%=photo.id%>" class="aaa" index="<%=index%>">
+              <img src="<%= picture_url(photo.alias_name,"web",@photo_category_id)%>" class="time" width="220" onmouseover="setover(this)" onmouseout="setout(this)">
+            </a>
+            </div>
+            <p><%=!photo.photo_detail.nil? ? photo.photo_detail.click_times : 0%></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $("#photos").addClass("active");
+  function setover(obj) {
+      obj.style['opacity'] = 0.8;
+      obj.style['filter'] = 'alpha(opacity=50)';
+  }
+  function setout(obj) {
+      obj.style['opacity'] = 1;
+      obj.style['filter'] = 'alpha(opacity=100)';
+  }
+  var page = 1;
+  var maxpage = $("#tiles")[0].getAttribute("maxpage");
+    (function ($){
+      $(".time").click(function(){
+        photoid = this.parentElement.getAttribute("photoid");
+
+        $.ajax({
+          url: "/photos/click_times?photo_id="+photoid,
+          method: "GET",
+          success: function(){
+          }
+        })
+      });
+
+      function GetRequest() {
+         var url = location.search; //获取url中"?"符后的字串
+         var theRequest = new Object();
+         if (url.indexOf("?") != -1) {
+            var str = url.substr(1);
+            strs = str.split("&");
+            for(var i = 0; i < strs.length; i ++) {
+               theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);
+            }
+         }
+         return theRequest;
+      }
+
+      $('#new').click(function(){
+        var Request = new Object();
+        Request = GetRequest();
+        // alert(Request["id"]);
+        window.location.href='/photos/list?photo_category_id='+Request["photo_category_id"]+'&type=new';
+      });
+
+      $('#hot').click(function(){
+        var Request = new Object();
+        Request = GetRequest();
+        // alert(Request["id"]);
+        window.location.href='/photos/list?photo_category_id='+Request["photo_category_id"]+'&type=hot';
+      })
+
+
+      $('#tiles').imagesLoaded(function() {
+        var handler = null;
+        // Prepare layout options.
+        var options = {
+          autoResize: true, // This will auto-update the layout when the browser window is resized.
+          container: $('#main'), // Optional, used for some extra CSS styling
+          offset: 2, // Optional, the distance between grid items
+          itemWidth: 242 // Optional, the width of a grid item
+        };
+
+        function applyLayout() {
+          $('#tiles').imagesLoaded(function() {
+            // Destroy the old handler
+            if (handler.wookmarkInstance) {
+              handler.wookmarkInstance.clear();
+            }
+
+            handler = $('#tiles li');
+            handler.wookmark(options);
+
+            $('a', handler).colorbox({
+              rel: 'lightbox'
+            });
+
+            $(".time").click(function(){
+              photoid = this.parentElement.getAttribute("photoid");
+              $.ajax({
+                url: "/photos/click_times?photo_id="+photoid,
+                method: "GET",
+                success: function(){
+                }
+              })
+            });
+          });
+        }
+        $(window).bind('scroll', onScroll); 
+
+        function onScroll(event){
+          var winHeight = window.innerHeight ? window.innerHeight : $(window).height(); // iphone fix
+          var closeToBottom = ($(window).scrollTop() + winHeight > $(document).height() - 100);
+
+          if(closeToBottom){
+              per_page = 10 ;
+              photo_category_id = $("#tiles")[0].getAttribute("photocategoryid");
+              if(page < maxpage){
+                page++;
+                $.ajax({
+                  url: '/photos/list/get_list_more?photo_category_id='+photo_category_id+'&page='+page,
+                  method: 'GET',
+                  success:function(data){
+                    $('#tiles').append(data);
+                    applyLayout();
+                  }
+                });
+              }
+          }
+        }
+
+        handler = $('#tiles li');
+        handler.wookmark(options);
+
+        $('a', handler).colorbox({
+          rel: 'lightbox'
+        });
+
+      });
+    })(jQuery);
+</script>
+
+<style type="text/css">
+	.container-fluid {
+		padding-left: 50px;
+		padding-right: 50px;
+	}
+
+	#tiles {
+		list-style-type: none;
+		position: relative; /** Needed to ensure items are laid out relative to this container **/
+		margin: 0;
+	}
+
+/**
+ * Grid items
+ */
+#tiles li {
+width: 230px;
+background-color: #ffffff;
+border: 1px solid #dedede;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+/*border-radius: 2px;*/
+display: none; /** Hide items initially to avoid a flicker effect **/
+  cursor: pointer;
+padding: 4px;
+}
+
+#tiles li img {
+display: block;
+}
+
+/**
+ * Grid item text
+ */
+#tiles li p {
+color: #666;
+font-size: 12px;
+margin: 7px 0 0 7px;
+}
+
+/**
+ * Some extra styles to randomize heights of grid items.
+ */
+#tiles ali:nth-child(3n) {
+height: 175px;
+}
+
+#tiles ali:nth-child(4n-3) {
+padding-bottom: 30px;
+}
+
+#tiles ali:nth-child(5n) {
+height: 250px;
+}
+
+/** General page styling **/
+  
+html {
+	background-color: #e9e9e9;
+}
+
+
+  </style>
+
+</style>

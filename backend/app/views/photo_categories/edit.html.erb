@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-md-12">
+    <h3>修改图片分类</h3>
+  </div>
+  <hr>
+<%= form_for(@photo_category,:html => {:role=>'form'}) do |f| %>
+  <div class="form-group">
+    <label>分类名称</label>
+    <%= f.text_field :name, class:"form-control",:placeholder => "输入分类名称"%>
+  </div>
+  <%= f.submit '保存图片分类',class: "btn btn-success"%>
+<% end %>

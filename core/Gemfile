@@ -1,0 +1,15 @@
+source 'http://ruby.taobao.org'
+
+gem 'rails', '3.2.13'
+gem 'amqp'
+gem 'bunny'
+gem 'mysql2'
+gem 'daemons'
+gem "carrierwave"
+gem 'mini_magick'
+gem 'mime-types'
+gem 'nokogiri'
+gem 'kaminari'
+gem 'settingslogic'
+gem 'connection_pool'
+gem "redis"

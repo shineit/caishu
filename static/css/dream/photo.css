@@ -1,0 +1,93 @@
+  .container {
+    max-width: 1250px;
+  }
+  .huadong{
+    width: 962px;
+    height: 270px;
+    float: left;
+  }
+  .dayhot{
+    /*margin-left: -20px;*/
+    width: 250px;
+    float: left;
+    height: 271px;
+    color: white;
+    cursor:pointer;  /*变手*/
+  }
+  .mod-channel-tags{
+    border-color: #795fa6;
+    list-style: none;
+    width: 270px;
+    border-radius: 2px;
+  }
+  .channel-tag1{
+    border-color: #795fa6;
+    height: 67px;
+    line-height: 70px;
+    background-color: #7e65ab;
+    float: left;
+    width: 74px;
+    text-align: center;
+  }
+  .channel-tag2{
+    border-color: #795fa6;
+    height: 67px;
+    line-height: 70px;
+    background-color: #846cb0;
+    float: left;
+    width: 74px;
+    text-align: center;
+  }
+  .channel-tag3{
+    border-color: #795fa6;
+    height: 67px;
+    line-height: 70px;
+    background-color: #9077bd;
+    float: left;
+    width: 74px;
+    text-align: center;
+  }
+  a:link {
+   color: #ffffff;
+   text-decoration: none;
+  }
+  a:visited {
+   COLOR: #ffffff;
+   text-decoration: none;
+  }
+  a:hover {
+   COLOR: #ff7f24;
+   text-decoration: none;
+  }
+
+  .clo {
+    margin-right: 3px;
+    float: left;
+    margin-bottom: 3px;
+  }
+  .clp {
+    float: left;
+  }
+
+  h2 {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei UI", SimHei, "\5B8B\4F53", simsun, sans-serif;
+  }
+  .imgsize{
+    float: left;
+    margin-right: 2px;
+  }
+  .itemlist {
+    /*height: 246px;*/
+    width: 1250px;
+    float: left;
+    margin-right: 5px;
+  }
+
+  .background_photo{
+    background-color: #fff;
+  }
+
+  .ddd{
+  float: left;
+  margin-right: 2px;
+}

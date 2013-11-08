@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-9 well form-horizontal col-md-offset-1">
+    <%= form_for(@mood,:html => {:role=>'form'}) do |f| %>
+    <h3>添加心情</h3>
+      <div class="form-group">
+        <label class="control-label">标题</label>
+        <%= f.text_field :title, class:"form-control",:placeholder => "输入标题"%>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label">文本内容</label>
+        <%= f.text_area :content, class:'form-control',:rows => '3',:placeholder => "内容"%>
+      </div>
+      <div class="form-group">
+        <label class="control-label">上传图片</label>
+        <%= f.file_field :file, class: "input-file" %>
+      </div>
+        <%= f.submit '保存心情',class: "btn btn-success"%>
+    <% end %>
+  </div>
+</div>

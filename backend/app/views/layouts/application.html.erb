@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Backend</title>
+  <script src="<%= File.join(Settings.static_root,'js/jquery.js' )%>" type="text/javascript"></script>
+  <script src="<%= File.join(Settings.static_root,'js/bootstrap.min.js' )%>" type="text/javascript"></script>
+  <link href="<%=File.join(Settings.static_root,'css/bootstrap.min.css' )%>" rel="stylesheet" type="text/css" />
+  <link href="<%=File.join(Settings.static_root,'css/base.css' )%>" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<%= render "layouts/header"%>
+<div class="container">
+<%= yield %>
+</div>
+</body>
+</html>

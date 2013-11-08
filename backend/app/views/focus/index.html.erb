@@ -1,0 +1,31 @@
+<div class="row">
+  <%= link_to "添加", '/focus/new', class: "btn btn-info" %>
+  <hr>
+	<div class="span11">
+		<div class="control-group">
+			<table class="table table-striped table-bordered">
+				<thead>
+				<tr>
+					<th>名称</th>
+					<th>类型</th>
+					<th>预览</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<% @focus.each do |photo|%>
+					<tr>
+						<td><%= photo.name%></td>
+						<td><%= PhotoCategory.find(photo.photo_category_id).name%></td>
+						<td>
+							<img src="<%= picture_url(photo.alias_name,"avatar",photo.photo_category_id.to_s) %>">
+						</td>
+						<td>
+							<%=link_to '删除', "/focus/delete?id=#{photo.id}" ,class: "btn btn-primary"%>
+						</td>
+					</tr>
+				<% end %>
+			</table>
+			<%#= paginate @focus%>
+		</div>
+	</div>
+</div>

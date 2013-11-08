@@ -1,0 +1,15 @@
+<%= partial("moods/date_list") %> 
+<div class="col-md-8" localday="<%= @local_day%>">
+  <% @moods.each do |mood|%>
+    <h4 class="list-group-item-heading list-group-item">
+      <p><%= mood.title %></p>
+      <p><a href="/moods/<%=mood.id%>"><%= cut_content(mood.content) %></a></p>
+      <div class="jiaoluo"><%= mood.created_at.strftime('%Y-%-m-%-d %H:%M:%S')%></div>
+    </h4>
+  <% end %>
+</div>
+<script type="text/javascript">
+  $("#moods").addClass("active");
+  local = $(".col-md-8").attr("localday");
+  $("#"+local).addClass("active");
+</script>

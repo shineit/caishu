@@ -1,0 +1,15 @@
+static_root: http://static.menghuanwd.cn
+
+origin_directory: /home/menghuanwd/menghuanwd/static/uploaders/origin
+weixin_directory: /home/menghuanwd/menghuanwd/static/uploaders/weixin
+avatar_directory: /home/menghuanwd/menghuanwd/static/uploaders/avatar
+wap_directory: /home/menghuanwd/menghuanwd/static/uploaders/wap
+web_directory: /home/menghuanwd/menghuanwd/static/uploaders/web
+focus_directory: /home/menghuanwd/menghuanwd/static/uploaders/focus
+
+origin_url: http://static.menghuanwd.cn/uploaders/origin
+weixin_url: http://static.menghuanwd.cn/uploaders/weixin
+avatar_url: http://static.menghuanwd.cn/uploaders/avatar
+wap_url: http://static.menghuanwd.cn/uploaders/wap
+web_url: http://static.menghuanwd.cn/uploaders/web
+focus_url: http://static.menghuanwd.cn/uploaders/focus

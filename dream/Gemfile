@@ -1,0 +1,13 @@
+source 'http://ruby.taobao.org'
+
+gem 'unicorn'
+gem 'sinatra'
+gem 'sinatra-contrib'
+gem 'mysql2'
+gem 'will_paginate', require: %w[ will_paginate will_paginate/active_record ]
+gem 'settingslogic'
+gem 'activerecord', '~> 3.2', require: 'active_record'
+gem 'connection_pool'
+gem "redis"
+gem 'rack-cache'
+gem 'puma'

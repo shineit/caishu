@@ -1,0 +1,25 @@
+<div class="row">
+  <%= link_to "添加", new_philosophy_path, class: "btn btn-info" %>
+  <hr>
+  <table class="table table-striped table-bordered table-hover table-condensed">
+    <thead>
+      <tr class="active">
+        <th>ID</th>
+        <th>内容</th>
+        <th>创建时间</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @philosophies.each do |philosophy|%>
+        <tr>
+          <td><%= philosophy.id%></td>
+          <td><%= cut_content(philosophy.content)%></td>
+          <td><%= philosophy.created_at.strftime('%Y-%-m-%-d %H:%M:%S')%></td>
+          <td><%= link_to "修改", edit_philosophy_path(philosophy), class: "btn btn-warning" %>
+            <%= link_to "删除", "/philosophies/delete?id=#{philosophy.id}" , class: "btn btn-danger" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

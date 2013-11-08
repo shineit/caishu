@@ -1,0 +1,30 @@
+<div class="row-fluid">
+  <div class="span10">
+    <h3>新增joke</h3>
+  </div>
+
+  <div class="span10 form-horizontal">
+    <%= form_for(@joke) do |f|%>
+	    <div class="control-group">
+	      <label class="control-label">名称</label>
+	      <div class="controls">
+	        <%= f.text_field :name, class: "input-medium" %>
+	      </div>
+	    </div>
+
+			<div class="control-group">
+		    <label class="control-label">内容</label>
+		    <div class="controls">
+		      <%= f.text_area :content, class: "input-xlarge", rows: 5%>
+		    </div>
+		  </div>
+
+		  <div class="control-group">
+		    <div class="controls">
+		      <%= f.submit "保存", class: "btn btn-primary"%>
+		    </div>
+		  </div>
+
+  	<% end %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<ul class="mod-channel-tags">
+  <% photo_categories = PhotoCategory.all%>
+  <% photo_categories.each do |i| %>
+    <a href="/photos/list?photo_category_id=<%=i.id%>">
+      <% t = rand(1..3)%>
+      <li class="channel-tag<%=t%>" onmouseover="setover(this)" onmouseout="setout(this)"><%= i.name%></li>
+    </a>
+  <% end %>
+</ul>
