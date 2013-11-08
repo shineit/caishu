@@ -9,9 +9,9 @@ Dir[ File.join(core_root, 'app/helpers/*.rb') ].each{|file| require file }
 
 require File.expand_path('../establish_connection', __FILE__)
 
-configure :development do
-  require 'sinatra/reloader'
-end
+# configure :development do
+#   require 'sinatra/reloader'
+# end
 
 include CoreHelper
 

@@ -8,10 +8,10 @@ Dir[ File.join(core_root, 'app/helpers/*.rb') ].each{|file| require file }
 require File.expand_path('../establish_connection', __FILE__)
 Dir[ File.expand_path('../helpers/*.rb', __FILE__) ].each{|file| require file }
 
-configure :development do
-  require 'sinatra/reloader'
-  Dir[ File.expand_path('../helpers/*.rb', __FILE__) ].each{|file| also_reload file}
-end
+# configure :development do
+#   require 'sinatra/reloader'
+#   Dir[ File.expand_path('../helpers/*.rb', __FILE__) ].each{|file| also_reload file}
+# end
 
 include CoreHelper
 include PhotosHelper
@@ -35,7 +35,7 @@ get '/photos' do
 end
 
 get '/photos/list' do 
-  cache_control :public, :max_age => 36000
+  # cache_control :public, :max_age => 36000
   get_photos_list
   erb :'photos/list'
 end
