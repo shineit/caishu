@@ -16,6 +16,10 @@ require File.expand_path('../establish_connection', __FILE__)
 include CoreHelper
 
 get '/' do 
+  REDIS.incr("come_times_wap")
+  REDIS.sadd("ips_wap",request.ip)
+  REDIS.sadd("user_agent_wap",request.user_agent)
+
   @photo_categories = PhotoCategory.all
   page = params[:page] || 1
   per_page = 10

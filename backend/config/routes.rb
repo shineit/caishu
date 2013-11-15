@@ -70,4 +70,8 @@ Backend::Application.routes.draw do
     get 'delete', :on => :collection
   end
 
+  resources :goodfriends do 
+    get 'delete', :on => :collection
+  end
+
 end

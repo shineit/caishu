@@ -8,3 +8,8 @@ if ENV['RACK_ENV'] == 'production'
   $stderr.reopen(File.new(File.expand_path("../log/production.log",  __FILE__), "a+"))
   $stderr.sync = true
 end
+
+if ENV['RACK_ENV'] == 'development'
+  $stderr.reopen(File.new(File.expand_path("../log/development.log",  __FILE__), "a+"))
+  $stderr.sync = true
+end

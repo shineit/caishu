@@ -40,4 +40,16 @@ module CoreHelper
 
     result
 	end
+
+  def gender_analyse(gender)
+    result = gender == 1 ? '男' : '女'
+  end
+
+  def encrypt_4(telephpone)
+    if telephpone
+      return telephpone[0,3].to_s+'****'+telephpone[7,11].to_s
+    else
+      return "我也未知"
+    end
+  end
 end

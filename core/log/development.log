@@ -1,0 +1,53 @@
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (0.3ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateJokes (20130820111611)
+Migrating to CreateMessages (20130820111735)
+Migrating to CreateMusics (20130820111830)
+Migrating to CreateWeblinks (20130820111910)
+Migrating to CreateCounttexts (20130826065905)
+Migrating to CreatePhotoDetails (20130903055231)
+Migrating to CreateFocus (20130905041928)
+Migrating to CreateCategories (20130905045231)
+Migrating to CreateMoods (20130917080259)
+Migrating to CreateMoodCategories (20130917080312)
+Migrating to CreatePhotoCategories (20130918025724)
+Migrating to CreatePhotos (20130918052501)
+Migrating to ChangeFocus (20130918054337)
+Migrating to CreateNoteCategories (20130918092639)
+Migrating to CreateNotes (20130922032359)
+Migrating to AddTitleToCategory (20130924014836)
+Migrating to CreateUsers (20130929054405)
+Migrating to CreatePhilosophies (20131017033617)
+Migrating to CreateEssays (20131021020926)
+Migrating to CreateGoodfriends (20131111130525)
+  [1m[35m (135.1ms)[0m  CREATE TABLE `goodfriends` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `qq` varchar(255), `qq_name` varchar(255), `weixin` varchar(255), `weixin_name` varchar(255), `age` int(11), `gender` int(11), `truth_name` varchar(255), `photo` varchar(255), `telephone` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (11.2ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20131111130525')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+  [1m[36m (6.8ms)[0m  [1mSELECT `schema_migrations`.`version` FROM `schema_migrations` [0m
+Migrating to CreateJokes (20130820111611)
+Migrating to CreateMessages (20130820111735)
+Migrating to CreateMusics (20130820111830)
+Migrating to CreateWeblinks (20130820111910)
+Migrating to CreateCounttexts (20130826065905)
+Migrating to CreatePhotoDetails (20130903055231)
+Migrating to CreateFocus (20130905041928)
+Migrating to CreateCategories (20130905045231)
+Migrating to CreateMoods (20130917080259)
+Migrating to CreateMoodCategories (20130917080312)
+Migrating to CreatePhotoCategories (20130918025724)
+Migrating to CreatePhotos (20130918052501)
+Migrating to ChangeFocus (20130918054337)
+Migrating to CreateNoteCategories (20130918092639)
+Migrating to CreateNotes (20130922032359)
+Migrating to AddTitleToCategory (20130924014836)
+Migrating to CreateUsers (20130929054405)
+Migrating to CreatePhilosophies (20131017033617)
+Migrating to CreateEssays (20131021020926)
+Migrating to CreateGoodfriends (20131111130525)
+Migrating to CreateSuggestions (20131113030327)
+  [1m[35m (164.0ms)[0m  CREATE TABLE `suggestions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `content` varchar(255), `created_at` datetime NOT NULL, `updated_at` datetime NOT NULL) ENGINE=InnoDB
+  [1m[36m (19.3ms)[0m  [1mINSERT INTO `schema_migrations` (`version`) VALUES ('20131113030327')[0m
+  [1m[35m (0.2ms)[0m  SELECT `schema_migrations`.`version` FROM `schema_migrations` 

@@ -5,7 +5,7 @@ module NotesHelper
       @notes = Note.where(:note_category_id => params[:id])
       @note_category = NoteCategory.find(params[:id]).name
     else
-      @notes = Note.all
+      @notes = Note.order("created_at desc").limit(10)
     end
 
 	end

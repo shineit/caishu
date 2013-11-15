@@ -1,0 +1,41 @@
+<div class="row">
+	<div class="container">
+		<div class="list-group">
+			<% if @suggestions%>
+			  <% @suggestions.each do |suggest|%>
+			    <h4 class="list-group-item-heading list-group-item">
+			      <br>
+			      <%= suggest.id%>楼&nbsp;&nbsp;
+			      <span class="content"><%= suggest.content%></span>
+			      <br><br>
+			    </h4>
+			    <br>
+			  <% end %>
+		  <% end %>
+		</div>
+
+		<span class="message">对网站建设有什么需要改进的提出点建议吧！</span>
+	  <form action="/suggestions" method="post" enctype="multipart/form-data">
+			<textarea name="content" id="content" class="form-control" rows="3" placeholder="匿名"></textarea>
+			<br>
+			<input type="submit" value="提交" id="save" class="btn btn-primary" />
+		</form>
+  </div>
+</div>
+
+<style type="text/css">
+.list-group-item-heading{
+  padding-left: 60px;
+  padding-right: 60px;
+  line-height: 30px;
+}
+.content{
+	font-size: 14px;
+}
+.message{
+	font-size: 18px
+}
+</style>
+<script type="text/javascript">
+  $("#suggestions").addClass("active");
+</script>

@@ -1,0 +1,12 @@
+/usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/binder.rb:190:in `initialize': Address already in use - bind(2) (Errno::EADDRINUSE)
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/binder.rb:190:in `new'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/binder.rb:190:in `add_tcp_listener'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/binder.rb:91:in `block in parse'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/binder.rb:82:in `each'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/binder.rb:82:in `parse'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/runner.rb:111:in `load_and_bind'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/cluster.rb:215:in `run'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/lib/puma/cli.rb:442:in `run'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/gems/puma-2.6.0/bin/puma:10:in `<top (required)>'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/bin/puma:23:in `load'
+	from /usr/local/rvm/gems/ruby-2.0.0-p247/bin/puma:23:in `<main>'

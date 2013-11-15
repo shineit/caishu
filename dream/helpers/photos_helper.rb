@@ -32,7 +32,7 @@ module PhotosHelper
 
   def get_photos_list
     page = params[:page] || 1
-    per_page = params[:per_page] || 30
+    per_page = params[:per_page] || 20
     photo_category_id = params[:photo_category_id]
     type = params[:type] || "new"
     if type == "new"

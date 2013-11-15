@@ -22,4 +22,5 @@ web:
   pool: 5
   username: root
   password: caishuying
-  host: 127.0.0.1
+  host: 115.29.195.154
+weixin_token: ximalaya23

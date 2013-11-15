@@ -1,0 +1,10 @@
+<div class="page">
+	QQ:&nbsp;&nbsp;<%= @goodfriend.qq%><br>
+	微信:&nbsp;&nbsp;<%= @goodfriend.weixin%><br>
+	年龄:&nbsp;&nbsp;<%= @goodfriend.age%><br>
+	性别:&nbsp;&nbsp;<%= @goodfriend.gender%><br>
+	电话号码:&nbsp;&nbsp;<%= encrypt_4(@goodfriend.telephone)%><br>
+	真实姓名:&nbsp;&nbsp;<%= @goodfriend.truth_name%><br>
+	照片:<br>&nbsp;&nbsp;<img src="<%= @goodfriend.photo%>"> 
+
+</div>

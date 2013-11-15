@@ -50,13 +50,13 @@ class PhotosController < ApplicationController
 		Dir.mkdir(mutiphotos_uploader_file) unless File.exist?(mutiphotos_uploader_file)
 
 		avatar_file = "/home/server/caishu/static/uploaders/avatar/#{photo_category_id}"
-    Dir.mkdir(avatar_file) unless File.exist?(avatar_file)
+		Dir.mkdir(avatar_file) unless File.exist?(avatar_file)
 
-    origin_file = "/home/server/caishu/static/uploaders/origin/#{photo_category_id}"
-    Dir.mkdir(origin_file) unless File.exist?(origin_file)
+		origin_file = "/home/server/caishu/static/uploaders/origin/#{photo_category_id}"
+		Dir.mkdir(origin_file) unless File.exist?(origin_file)
 
-    web_file = "/home/server/caishu/static/uploaders/web/#{photo_category_id}"
-    Dir.mkdir(web_file) unless File.exist?(web_file)
+		web_file = "/home/server/caishu/static/uploaders/web/#{photo_category_id}"
+		Dir.mkdir(web_file) unless File.exist?(web_file)
 
 		suffix = params[:photo][:file].original_filename.split(".")[1]
 		head_name = params[:photo][:file].original_filename.split(".")[0]
@@ -89,7 +89,7 @@ class PhotosController < ApplicationController
 
     web_file = "/home/server/caishu/static/uploaders/web/#{photo.photo_category_id}/#{photo.alias_name}"
     File.delete(web_file) if File.exist?(web_file)
-    
+	    
 		photo.destroy
 		
 		redirect_to "/photos?page=#{params[:page]}photo_category_id=#{params[:photo_category_id]}"

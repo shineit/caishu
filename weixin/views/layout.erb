@@ -13,51 +13,6 @@
 
 <%= yield %>
 
-<script type="text/javascript">
-  var page = 1;
-  var category2 = true;
-  $(function(){
-    $(".get-more").click(function(){
-      $(".get-more").addClass("loading").text('');
-      maxpage = $(".container").attr("maxpage");
-      photo_category_id = $(".container").attr("photocategoryid");
-      if(page < maxpage){
-        $.ajax({
-          url: "/get_more_photos?photo_category_id="+photo_category_id,
-          method: "get",
-          data:{"page":page+1},
-
-          success:function(data){
-            page++;
-            if(page >= maxpage){
-              $(".get-more").hide();
-            }
-            $(".container").append(data);
-          },
-          error: function () {
-                  alert("服务器忙，请稍后再试。");
-              },
-          complete:function(){
-            $(".get-more").removeClass("loading").text('获取更多...');
-          }
-        });
-      }else{
-        $(".get-more").hide();
-      }
-    });
-
-    $(".header").find(".title").off().on("click", function () {
-      $(".header").find(".title").find("i").toggleClass("sup");
-      if(category2 == true){
-        $(".header .popover").slideToggle();
-        category2 == false;
-      }else{
-        $(".header .popover").hide();
-      }
-    });
-  });
-</script>
-
 </body>
 </html>
 

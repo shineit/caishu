@@ -20,6 +20,7 @@ module JokesHelper
     jokes.each do |joke|
     html = '<h4 class="list-group-item-heading list-group-item">
         <br>
+        '+joke.id.to_s+'.
         '+joke.content+'
         <br><br>
       </h4>

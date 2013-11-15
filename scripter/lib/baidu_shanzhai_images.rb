@@ -8,6 +8,7 @@ require 'digest/sha1'
 require "thread"
 require 'active_record'
 require 'json'
+require 'redis'
 
 core_root = File.open(File.expand_path('../../core.root', __FILE__), &:readline).delete("\n").gsub("\\", '/')
 require File.join(core_root, 'config/initializers')

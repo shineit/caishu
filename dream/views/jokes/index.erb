@@ -3,12 +3,14 @@
     <% @jokes.each do |joke|%>
       <h4 class="list-group-item-heading list-group-item">
         <br>
+        <%= joke.id%>.
         <%= joke.content%>
         <br><br>
       </h4>
       <br>
     <% end %>
   </div>
+  <!-- <a href="#" onclick="more()">更多</a> -->
 </div>
 <style type="text/css">
 
@@ -19,6 +21,22 @@
 }
 </style>
 <script type="text/javascript">
+  // function more(){
+  //   var page = 1;
+  //   var maxpage = $("#tiles")[0].getAttribute("maxpage");
+  //   if(page < maxpage){
+  //     page++;
+  //     $.ajax({
+  //       url: '/jokes/get_jokes_more?page='+page,
+  //       method: 'GET',
+  //       success:function(data){
+  //         $('#tiles').append(data);
+
+  //       }
+  //     });
+  //   }
+  // }
+
   (function ($){
     $(window).bind('scroll', onScroll); 
     var page = 1;
@@ -42,4 +60,7 @@
     }
   })(jQuery);
 
+</script>
+<script type="text/javascript">
+  $("#jokes").addClass("active");
 </script>

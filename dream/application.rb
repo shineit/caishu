@@ -8,10 +8,10 @@ Dir[ File.join(core_root, 'app/helpers/*.rb') ].each{|file| require file }
 require File.expand_path('../establish_connection', __FILE__)
 Dir[ File.expand_path('../helpers/*.rb', __FILE__) ].each{|file| require file }
 
-# configure :development do
-#   require 'sinatra/reloader'
-#   Dir[ File.expand_path('../helpers/*.rb', __FILE__) ].each{|file| also_reload file}
-# end
+configure :development do
+  require 'sinatra/reloader'
+  Dir[ File.expand_path('../helpers/*.rb', __FILE__) ].each{|file| also_reload file}
+end
 
 include CoreHelper
 include PhotosHelper
@@ -20,12 +20,19 @@ include NotesHelper
 include EssaysHelper
 include PhilosophiesHelper
 include JokesHelper
+include SuggestionsHelper
+
+# require 'sinatra/form_helpers'
 
 # require "rack/cache"
 # use Rack::Cache
 
 get '/' do 
+  REDIS.incr("come_times_web")
+  REDIS.sadd("ips_web",request.ip)
+  REDIS.sadd("user_agent_web",request.user_agent)
   # cache_control :public, :max_age => 36000
+
   erb :'main/index'
 end
 
@@ -90,4 +97,19 @@ end
 
 get '/jokes/get_jokes_more' do
   get_jokes_more
+end
+
+get '/suggestions' do 
+  get_suggestions
+  erb :'suggestions/index'
+end
+
+post '/suggestions' do 
+  post_suggestions
+  redirect to ('/suggestions')
+end
+
+get '/me' do
+  # get_me
+  erb :'me/index'
 end
